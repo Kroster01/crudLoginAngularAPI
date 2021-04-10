@@ -19,10 +19,10 @@ const connection = mysql.createConnection({
 
 // Route
 app.get("/", (req, res) => {
-  res.send("Welcome to my API!");
+  res.send("Welcome to my API versión 2!");
 });
 // all customers
-app.get('/customers', (req, res) => {
+app.get('/users', (req, res) => {
     const sql = 'SELECT * FROM user';
   
     connection.query(sql, (error, results) => {
@@ -35,7 +35,7 @@ app.get('/customers', (req, res) => {
     });
   });
   
-  app.get('/customers/:id', (req, res) => {
+  app.get('/users/:id', (req, res) => {
     const { id } = req.params;
     const sql = `SELECT * FROM user WHERE id = ${id}`;
     connection.query(sql, (error, result) => {
