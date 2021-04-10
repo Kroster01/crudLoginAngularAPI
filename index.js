@@ -90,4 +90,11 @@ app.get('/customers', (req, res) => {
     console.log('Database server running!');
   });
   
+  connection.on('uncaughtException', function(err) {
+    logger.log('error', 'Fatal uncaught exception crashed cluster', err, function(err, level, msg, meta) {
+      console.log(`Server running on port ${PORT}`)
+      connection.exit(1);
+    });
+});
+
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
